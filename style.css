@@ -1,368 +1,615 @@
-/*==================================================
-  VARIABLES
-==================================================*/
-
-:root {
-
-    --background: #111111;
-    --surface: #1B1B1B;
-    --text: #F5F5F5;
-    --secondary: #A8A8A8;
-    --accent: #4EA8FF;
-    --border: #2D2D2D;
-
-    --max-width: 1100px;
-
-    --radius: 18px;
-
-    --transition: .25s ease;
-
-    --font: "Inter", sans-serif;
-
-}
-
-
-/*==================================================
+/*==============================
   RESET
-==================================================*/
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+==============================*/
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-html{
-
-    scroll-behavior:smooth;
-
+html {
+    scroll-behavior: smooth;
 }
 
-body{
-
-    background:var(--background);
-
-    color:var(--text);
-
-    font-family:var(--font);
-
-    line-height:1.7;
-
+img {
+    display: block;
+    max-width: 100%;
 }
 
-img{
-
-    display:block;
-    width:100%;
-
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
+ul {
+    list-style: none;
+}
 
-/*==================================================
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+/*==============================
+  VARIABLES
+==============================*/
+:root {
+    --background: #111111;
+    --card: #1B1B1B;
+    --text: #F5F5F5;
+    --secondary: #A5A5A5;
+    --accent: #4EA8FF;
+    --border: #2B2B2B;
+
+    --font-main: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    --header-height: 4.5rem;
+
+    --container-width: min(1200px, 92%);
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-full: 999px;
+
+    --transition-fast: 0.2s ease;
+    --transition-base: 0.3s ease;
+}
+
+/*==============================
+  GENERAL
+==============================*/
+body {
+    background-color: var(--background);
+    color: var(--text);
+    font-family: var(--font-main);
+    font-size: clamp(1rem, 0.95rem + 0.2vw, 1.0625rem);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: var(--container-width);
+    margin-inline: auto;
+}
+
+.section {
+    padding-block: clamp(4rem, 6vw, 7rem);
+}
+
+.section-title {
+    font-size: clamp(1.75rem, 1.5rem + 1vw, 2.25rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+/* Foco de teclado visible para accesibilidad */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+/*==============================
+  BOTONES
+==============================*/
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+    transition: transform var(--transition-fast),
+                background-color var(--transition-fast),
+                border-color var(--transition-fast),
+                color var(--transition-fast);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--accent);
+    color: #0B0B0B;
+}
+
+.btn-primary:hover {
+    background-color: #6FBCFF;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--text);
+    border-color: var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+/*==============================
+  HEADER / NAV
+==============================*/
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(17, 17, 17, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.header-inner {
+    width: var(--container-width);
+    margin-inline: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+/* Botón hamburguesa (oculto en escritorio) */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 2.25rem;
+    height: 2.25rem;
+    background: transparent;
+    border: none;
+}
+
+.nav-toggle span {
+    width: 22px;
+    height: 2px;
+    background-color: var(--text);
+    border-radius: var(--radius-full);
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.25rem, 2vw, 2.25rem);
+}
+
+.nav-link {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.nav-link:hover {
+    color: var(--text);
+}
+
+.nav-cv {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.85rem;
+}
+
+/*==============================
   HERO
-==================================================*/
-
-.hero{
-
-    width:100%;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
+==============================*/
+.hero {
+    position: relative;
+    padding-top: var(--header-height);
 }
 
-
-/*==================================================
-  BANNER
-==================================================*/
-
-.banner{
-
-    width:100%;
-
-    height:280px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #151515,
-            #1f1f1f,
-            #173B61
-        );
-
+.hero-banner {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #1a1a1a 0%, #202733 50%, #17222E 100%);
 }
 
-
-/*==================================================
-  CONTENIDO
-==================================================*/
-
-.hero-content{
-
-    width:90%;
-
-    max-width:var(--max-width);
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    text-align:center;
-
-    margin-top:-95px;
-
-    padding-bottom:50px;
-
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-block: 0 clamp(2.5rem, 6vw, 4rem);
 }
 
-
-/*==================================================
-  FOTO
-==================================================*/
-
-.profile-image{
-
-    width:180px;
-
-    height:180px;
-
-    border-radius:50%;
-
-    overflow:hidden;
-
-    border:5px solid white;
-
-    background:#222;
-
+.hero-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--text);
+    margin-top: -60px;
+    background-color: var(--card);
 }
 
-
-.profile-image img{
-
-    width:100%;
-
-    height:100%;
-
-    object-fit:cover;
-
+.hero-name {
+    margin-top: 1.5rem;
+    font-size: clamp(2rem, 1.6rem + 2vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
 }
 
-
-/*==================================================
-  NOMBRE
-==================================================*/
-
-.hero-content h1{
-
-    margin-top:25px;
-
-    font-size:clamp(2rem,5vw,3.2rem);
-
-    font-weight:700;
-
+.hero-title {
+    margin-top: 0.5rem;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem);
 }
 
-
-.hero-content h2{
-
-    margin-top:8px;
-
-    color:var(--accent);
-
-    font-size:1.2rem;
-
-    font-weight:500;
-
+.hero-text {
+    margin-top: 1.5rem;
+    max-width: 620px;
+    color: var(--secondary);
+    line-height: 1.7;
 }
 
-
-/*==================================================
-  SOBRE MI
-==================================================*/
-
-.about{
-
-    margin-top:30px;
-
-    max-width:720px;
-
-    color:var(--secondary);
-
-    font-size:1rem;
-
+.hero-content > .btn {
+    margin-top: 2rem;
 }
 
-
-/*==================================================
-  BOTON
-==================================================*/
-
-.download-btn{
-
-    margin-top:35px;
-
-    text-decoration:none;
-
-    color:white;
-
-    background:var(--accent);
-
-    padding:14px 28px;
-
-    border-radius:999px;
-
-    font-weight:600;
-
-    transition:var(--transition);
-
+/*==============================
+  SOBRE MÍ
+==============================*/
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.5rem, 5vw, 4rem);
 }
 
-
-.download-btn:hover{
-
-    transform:translateY(-3px);
-
-    background:#6bb9ff;
-
+.about-text p {
+    max-width: 700px;
+    color: var(--secondary);
+    line-height: 1.8;
 }
 
-
-/*==================================================
-  SKILLS
-==================================================*/
-
-.skills{
-
-    margin-top:45px;
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:14px;
-
-    max-width:850px;
-
+.skills-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 1.25rem;
 }
 
-
-.skills span{
-
-    padding:10px 18px;
-
-    border-radius:999px;
-
-    background:var(--surface);
-
-    border:1px solid var(--border);
-
-    color:var(--secondary);
-
-    transition:var(--transition);
-
-    cursor:default;
-
+.badge-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
 }
 
-
-.skills span:hover{
-
-    border-color:var(--accent);
-
-    color:white;
-
+.badge {
+    padding: 0.5rem 1.1rem;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    color: var(--secondary);
+    transition: border-color var(--transition-fast), color var(--transition-fast);
 }
 
+.badge:hover {
+    border-color: var(--accent);
+    color: var(--text);
+}
 
-/*==================================================
-  RESPONSIVE
-==================================================*/
+/*==============================
+  PROYECTOS
+==============================*/
+.projects-track {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem;
+}
 
-@media (max-width:768px){
+.project-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-base), border-color var(--transition-base);
+}
 
-    .banner{
+.project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+}
 
-        height:220px;
+.project-image {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    background-color: #232323;
+}
 
+.project-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    letter-spacing: -0.01em;
+}
+
+.project-field {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-bottom: 0.6rem;
+    line-height: 1.6;
+}
+
+.project-label {
+    color: var(--text);
+    font-weight: 600;
+    margin-right: 0.25rem;
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-block: 1rem 1.5rem;
+}
+
+.tech-tag {
+    padding: 0.35rem 0.85rem;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    color: var(--secondary);
+}
+
+.project-body > .btn {
+    margin-top: auto;
+    align-self: flex-start;
+}
+
+/*==============================
+  CONTACTO
+==============================*/
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    max-width: 480px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.contact-item:first-child {
+    border-top: 1px solid var(--border);
+}
+
+.contact-label {
+    color: var(--secondary);
+    font-size: 0.9rem;
+}
+
+.contact-link {
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+a.contact-link:hover {
+    color: var(--accent);
+}
+
+/*==============================
+  FOOTER
+==============================*/
+.site-footer {
+    padding-block: 2.5rem;
+    text-align: center;
+    color: var(--secondary);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+/*==============================
+  ANIMACIÓN DE ENTRADA (fade in)
+==============================*/
+.section,
+.hero-content {
+    opacity: 0;
+    transform: translateY(16px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
     }
 
-    .hero-content{
-
-        margin-top:-70px;
-
+    .section,
+    .hero-content,
+    .project-card,
+    .btn {
+        animation: none;
+        transition: none;
     }
-
-    .profile-image{
-
-        width:145px;
-
-        height:145px;
-
-    }
-
-    .about{
-
-        font-size:.95rem;
-
-    }
-
-    .download-btn{
-
-        width:100%;
-
-        max-width:260px;
-
-    }
-
 }
 
-@media (max-width:480px){
+/*==============================
+  RESPONSIVE — 1200px
+==============================*/
+@media (max-width: 1200px) {
+    .projects-track {
+        gap: 1.5rem;
+    }
+}
 
-    .banner{
-
-        height:180px;
-
+/*==============================
+  RESPONSIVE — 992px (tablet grande)
+==============================*/
+@media (max-width: 992px) {
+    .about-grid {
+        grid-template-columns: 1fr;
     }
 
-    .profile-image{
-
-        width:120px;
-
-        height:120px;
-
+    .projects-track {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .hero-content h1{
+    .hero-banner {
+        height: 220px;
+    }
+}
 
-        font-size:2rem;
-
+/*==============================
+  RESPONSIVE — 768px (tablet)
+==============================*/
+@media (max-width: 768px) {
+    :root {
+        --header-height: 4rem;
     }
 
-    .hero-content h2{
-
-        font-size:1rem;
-
+    /* Menú hamburguesa */
+    .nav-toggle {
+        display: flex;
     }
 
-    .skills{
-
-        gap:10px;
-
+    .nav-menu {
+        position: fixed;
+        top: var(--header-height);
+        right: 0;
+        width: min(280px, 75%);
+        height: calc(100vh - var(--header-height));
+        background-color: var(--card);
+        border-left: 1px solid var(--border);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 0;
+        padding: 1.5rem;
+        transform: translateX(100%);
+        transition: transform var(--transition-base);
     }
 
-    .skills span{
-
-        font-size:.9rem;
-
-        padding:8px 14px;
-
+    .nav-menu.is-open {
+        transform: translateX(0);
     }
 
+    .nav-menu li {
+        width: 100%;
+        padding-block: 0.75rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .nav-menu li:last-child {
+        border-bottom: none;
+        margin-top: 0.75rem;
+    }
+
+    .nav-cv {
+        width: 100%;
+    }
+
+    /* Banner reducido */
+    .hero-banner {
+        height: 180px;
+    }
+
+    /* Tarjetas de proyecto: scroll horizontal */
+    .projects-track {
+        display: flex;
+        grid-template-columns: unset;
+        gap: 1.25rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        padding-bottom: 0.75rem;
+        margin-inline: calc(var(--container-width, 100%) * -0.04);
+        padding-inline: calc(var(--container-width, 100%) * 0.04);
+    }
+
+    .project-card {
+        flex: 0 0 90%;
+        scroll-snap-align: center;
+    }
+
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+}
+
+/*==============================
+  RESPONSIVE — 576px (móvil)
+==============================*/
+@media (max-width: 576px) {
+    .section {
+        padding-block: 3rem;
+    }
+
+    .hero-banner {
+        height: 150px;
+    }
+
+    .hero-photo {
+        width: 96px;
+        height: 96px;
+        margin-top: -48px;
+    }
+
+    .hero-name {
+        font-size: 1.75rem;
+    }
+
+    .hero-text {
+        font-size: 0.9rem;
+    }
+
+    .badge {
+        font-size: 0.8rem;
+        padding: 0.45rem 0.9rem;
+    }
+
+    .project-card {
+        flex-basis: 90%;
+    }
+
+    .project-body {
+        padding: 1.25rem;
+    }
 }
