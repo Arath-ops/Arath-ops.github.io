@@ -1,90 +1,285 @@
 <!DOCTYPE html>
 <html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <head>
-        <meta charset="UTF-8">
+    <!-- ===========================
+         SEO BÁSICO
+    =========================== -->
+    <title>Arath Díaz | UX/UI Designer Junior</title>
+    <meta name="description" content="Portafolio de Arath Díaz, UX/UI Designer Junior. Proyectos de investigación UX, prototipado y diseño de interfaces centrados en el usuario.">
+    <meta name="author" content="Arath Díaz">
+    <meta name="keywords" content="UX Designer, UI Designer, Portafolio, Diseño de Interfaces, UX Research, Figma">
 
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Arath Díaz | UX/UI Designer Junior">
+    <meta property="og:description" content="Portafolio de UX/UI Designer Junior. Investigación, prototipado y diseño de interfaces centrados en el usuario.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/images/og-cover.jpg">
 
-            <title>Arath Díaz | UX/UI Designer</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/icons/favicon.png">
 
-            <!-- AQUÍ SE ENLAZA EL CSS -->
-            <link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-    </head>
+    <!-- Estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    <body>
+    <!-- ===========================
+         HEADER / NAV FIJO
+    =========================== -->
+    <header class="site-header" id="inicio">
+        <div class="header-inner">
+            <a href="#inicio" class="logo">Arath Díaz</a>
+
+            <nav class="main-nav" aria-label="Navegación principal">
+                <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menú de navegación">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                    <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+                    <li><a href="#proyectos" class="nav-link">Proyectos</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                    <li>
+                        <a href="assets/documents/CV-Arath-Diaz.pdf" class="btn btn-primary nav-cv" download>
+                            Descargar CV
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
     <main>
 
-        <!-- ================= HERO ================= -->
+        <!-- ===========================
+             HERO
+        =========================== -->
+        <section class="hero" aria-label="Presentación">
+            <div class="hero-banner" aria-hidden="true"></div>
 
-        <section class="hero">
+            <div class="hero-content container">
+                <img
+                    src="assets/images/perfil.jpg"
+                    alt="Fotografía de perfil de Arath Díaz"
+                    class="hero-photo"
+                    width="160"
+                    height="160"
+                >
 
-            <!-- Banner -->
-            <div class="banner"></div>
+                <h1 class="hero-name">Arath Díaz</h1>
+                <p class="hero-title">UX/UI Designer Junior</p>
 
-            <!-- Información principal -->
-            <div class="hero-content">
-
-                <!-- Foto -->
-                <div class="profile-image">
-                    <img src="images/profile.jpg" alt="Fotografía de Arath Díaz">
-                </div>
-
-                <!-- Nombre -->
-                <h1>Arath Díaz</h1>
-
-                <h2>UX/UI Designer Junior</h2>
-
-                <!-- Sobre mí -->
-                <p class="about">
-                    Soy Ingeniero en Software en transición hacia UX/UI Design.
-                    Me apasiona comprender el comportamiento de los usuarios y
-                    diseñar interfaces intuitivas que resuelvan problemas reales.
-                    Actualmente desarrollo proyectos enfocados en investigación UX,
-                    prototipado y pruebas de usabilidad utilizando Figma y Maze.
+                <p class="hero-text">
+                    Diseñador UX/UI enfocado en crear experiencias digitales claras,
+                    accesibles y centradas en el usuario. Apasionado por la investigación,
+                    el prototipado y la mejora continua de productos digitales.
                 </p>
 
-                <!-- Botón -->
-                <a href="documents/CV-Arath-Diaz.pdf"
-                   class="download-btn"
-                   download>
+                <a href="assets/documents/CV-Arath-Diaz.pdf" class="btn btn-primary" download>
                     Descargar CV
                 </a>
+            </div>
+        </section>
 
-                <!-- Skills -->
-
-                <div class="skills">
-
-                    <span>UX Research</span>
-
-                    <span>Figma</span>
-
-                    <span>Maze</span>
-
-                    <span>Wireframing</span>
-
-                    <span>Prototyping</span>
-
-                    <span>Usability Testing</span>
-
-                    <span>Responsive Design</span>
-
-                    <span>HTML</span>
-
-                    <span>CSS</span>
-
-                    <span>Git</span>
-
-                    <span>GitHub</span>
-
+        <!-- ===========================
+             SOBRE MÍ
+        =========================== -->
+        <section id="sobre-mi" class="section about" aria-labelledby="sobre-mi-title">
+            <div class="container about-grid">
+                <div class="about-text">
+                    <h2 id="sobre-mi-title" class="section-title">Sobre mí</h2>
+                    <p>
+                        Soy un diseñador UX/UI en formación constante, interesado en entender
+                        a profundidad las necesidades de los usuarios para transformarlas en
+                        soluciones digitales simples y funcionales. Combino investigación,
+                        prototipado y buenas prácticas de desarrollo front-end para crear
+                        experiencias coherentes de principio a fin.
+                    </p>
                 </div>
 
+                <div class="about-skills">
+                    <h3 class="skills-title">Habilidades</h3>
+                    <ul class="badge-list" aria-label="Lista de habilidades técnicas">
+                        <li class="badge">UX Research</li>
+                        <li class="badge">Figma</li>
+                        <li class="badge">Maze</li>
+                        <li class="badge">Wireframing</li>
+                        <li class="badge">Prototyping</li>
+                        <li class="badge">Usability Testing</li>
+                        <li class="badge">Responsive Design</li>
+                        <li class="badge">HTML</li>
+                        <li class="badge">CSS</li>
+                        <li class="badge">Git</li>
+                        <li class="badge">GitHub</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
+        <!-- ===========================
+             PROYECTOS
+        =========================== -->
+        <section id="proyectos" class="section projects" aria-labelledby="proyectos-title">
+            <div class="container">
+                <h2 id="proyectos-title" class="section-title">Proyectos</h2>
+
+                <div class="projects-track" role="list">
+
+                    <!-- Proyecto 1 -->
+                    <article class="project-card" role="listitem">
+                        <img
+                            src="assets/projects/amazon-prime-ux-research.jpg"
+                            alt="Vista previa del proyecto Amazon Prime UX Research"
+                            class="project-image"
+                            loading="lazy"
+                        >
+                        <div class="project-body">
+                            <h3 class="project-title">Amazon Prime UX Research</h3>
+
+                            <p class="project-field">
+                                <span class="project-label">Problema:</span>
+                                Placeholder: descripción breve del problema detectado durante la investigación.
+                            </p>
+                            <p class="project-field">
+                                <span class="project-label">Qué hice:</span>
+                                Placeholder: resumen de las actividades y metodología aplicada.
+                            </p>
+                            <p class="project-field">
+                                <span class="project-label">Resultado:</span>
+                                Placeholder: resultado obtenido tras aplicar la solución propuesta.
+                            </p>
+
+                            <ul class="tech-list" aria-label="Tecnologías utilizadas">
+                                <li class="tech-tag">Figma</li>
+                                <li class="tech-tag">Maze</li>
+                                <li class="tech-tag">UX Research</li>
+                            </ul>
+
+                            <a href="#" class="btn btn-secondary">Ver caso de estudio</a>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 2 -->
+                    <article class="project-card" role="listitem">
+                        <img
+                            src="assets/projects/steam-redesign.jpg"
+                            alt="Vista previa del proyecto Steam Redesign"
+                            class="project-image"
+                            loading="lazy"
+                        >
+                        <div class="project-body">
+                            <h3 class="project-title">Steam Redesign</h3>
+
+                            <p class="project-field">
+                                <span class="project-label">Problema:</span>
+                                Placeholder: descripción breve del problema detectado durante la investigación.
+                            </p>
+                            <p class="project-field">
+                                <span class="project-label">Qué hice:</span>
+                                Placeholder: resumen de las actividades y metodología aplicada.
+                            </p>
+                            <p class="project-field">
+                                <span class="project-label">Resultado:</span>
+                                Placeholder: resultado obtenido tras aplicar la solución propuesta.
+                            </p>
+
+                            <ul class="tech-list" aria-label="Tecnologías utilizadas">
+                                <li class="tech-tag">Figma</li>
+                                <li class="tech-tag">Wireframing</li>
+                                <li class="tech-tag">Prototyping</li>
+                            </ul>
+
+                            <a href="#" class="btn btn-secondary">Ver caso de estudio</a>
+                        </div>
+                    </article>
+
+                    <!-- Proyecto 3 -->
+                    <article class="project-card" role="listitem">
+                        <img
+                            src="assets/projects/responsive-subscription-manager.jpg"
+                            alt="Vista previa del proyecto Responsive Subscription Manager"
+                            class="project-image"
+                            loading="lazy"
+                        >
+                        <div class="project-body">
+                            <h3 class="project-title">Responsive Subscription Manager</h3>
+
+                            <p class="project-field">
+                                <span class="project-label">Problema:</span>
+                                Placeholder: descripción breve del problema detectado durante la investigación.
+                            </p>
+                            <p class="project-field">
+                                <span class="project-label">Qué hice:</span>
+                                Placeholder: resumen de las actividades y metodología aplicada.
+                            </p>
+                            <p class="project-field">
+                                <span class="project-label">Resultado:</span>
+                                Placeholder: resultado obtenido tras aplicar la solución propuesta.
+                            </p>
+
+                            <ul class="tech-list" aria-label="Tecnologías utilizadas">
+                                <li class="tech-tag">HTML</li>
+                                <li class="tech-tag">CSS</li>
+                                <li class="tech-tag">Responsive Design</li>
+                            </ul>
+
+                            <a href="#" class="btn btn-secondary">Ver caso de estudio</a>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ===========================
+             CONTACTO
+        =========================== -->
+        <section id="contacto" class="section contact" aria-labelledby="contacto-title">
+            <div class="container">
+                <h2 id="contacto-title" class="section-title">Contacto</h2>
+
+                <ul class="contact-list">
+                    <li class="contact-item">
+                        <span class="contact-label">Correo</span>
+                        <a href="mailto:arath.diaz@example.com" class="contact-link">arath.diaz@example.com</a>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">LinkedIn</span>
+                        <a href="https://linkedin.com/in/arath-diaz" class="contact-link" target="_blank" rel="noopener noreferrer">linkedin.com/in/arath-diaz</a>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">GitHub</span>
+                        <a href="https://github.com/arath-diaz" class="contact-link" target="_blank" rel="noopener noreferrer">github.com/arath-diaz</a>
+                    </li>
+                    <li class="contact-item">
+                        <span class="contact-label">Ubicación</span>
+                        <span class="contact-link">Hidalgo, México</span>
+                    </li>
+                </ul>
+            </div>
         </section>
 
     </main>
-</body>
 
+    <!-- ===========================
+         FOOTER
+    =========================== -->
+    <footer class="site-footer">
+        <p>&copy; 2026 Arath Díaz</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js" defer></script>
+</body>
 </html>
