@@ -1,5 +1,3 @@
-
-
 'use strict';
 
 /* ==============================================================
@@ -34,6 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ignorar enlaces vacíos o solo "#"
                 if (!targetId || targetId === '#') return;
+
+                // Caso especial: "Inicio" apunta al header (fijo),
+                // así que se sube al inicio real del documento.
+                if (targetId === '#inicio') {
+                    event.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    closeMobileMenu();
+                    return;
+                }
 
                 const targetEl = document.querySelector(targetId);
                 if (!targetEl) return;
