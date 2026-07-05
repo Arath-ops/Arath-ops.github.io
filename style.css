@@ -172,10 +172,17 @@ button:focus-visible {
     justify-content: center;
     align-items: center;
     gap: 5px;
-    width: 2.25rem;
-    height: 2.25rem;
-    background: transparent;
-    border: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.nav-toggle:hover {
+    border-color: var(--accent);
+    background-color: #202020;
 }
 
 .nav-toggle span {
@@ -511,6 +518,11 @@ a.contact-link:hover {
 @media (max-width: 768px) {
     :root {
         --header-height: 4rem;
+    }
+
+    /* En móvil, el botón hamburguesa se recorre al extremo derecho */
+    .header-inner {
+        justify-content: flex-end;
     }
 
     /* Menú hamburguesa */
