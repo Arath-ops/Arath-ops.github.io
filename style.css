@@ -226,6 +226,7 @@ button:focus-visible {
 .hero-banner {
     width: 100%;
     height: 280px;
+    /* IMAGEN REQUERIDA: assets/images/banner.jpg (1920x280px o 2400x560px para retina) */
     background-image:
         linear-gradient(135deg, rgba(17,17,17,0.15) 0%, rgba(23,34,46,0.15) 100%),
         url("assets/images/banner.jpg");
